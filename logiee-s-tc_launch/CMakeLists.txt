@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(sample_vehicle_launch)
+project(logiee-s-tc_launch)
 
 if(NOT CMAKE_CXX_STANDARD)
   set(CMAKE_CXX_STANDARD 17)
