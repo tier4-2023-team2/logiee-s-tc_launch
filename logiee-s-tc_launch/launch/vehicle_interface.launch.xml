@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
   <arg name="vehicle_id" default="$(env VEHICLE_ID default)"/>
-  <!-- TBD jw_interface -->
+  
+  <!-- param for jw_interface_serial -->
+  <arg name="serial_port" default="/dev/ttyUSB0"/>
+  <arg name="vehicle_cmd_timeout" default="0.2"/>
+
+  <!-- jw_interface_serial -->
+  <include file="$(find jw_interface_serial)/launch/jw_interface.launch" pass_all_args="true"/>
+
+  <!-- jw_interface awiv adapter -->
+  <include file="$(find jw_interface_awiv_adapter)/launch/jw_interface_awiv_adapter.launch"/>
+
 </launch>
