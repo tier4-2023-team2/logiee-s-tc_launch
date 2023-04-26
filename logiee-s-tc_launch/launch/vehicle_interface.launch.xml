@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
   <arg name="vehicle_id" default="$(env VEHICLE_ID default)"/>
-  
+
   <!-- param for jw_interface_serial -->
-  <arg name="serial_port" default="/dev/ttyUSB0"/>
-  <arg name="vehicle_cmd_timeout" default="0.2"/>
+  <arg name="serial_port" default="/dev/ttyUSB0" />
+  <arg name="vehicle_cmd_timeout" default="0.2" />
 
   <!-- jw_interface_serial -->
-  <include file="$(find jw_interface_serial)/launch/jw_interface.launch" pass_all_args="true"/>
+  <include file="$(find-pkg-share jw_interface_serial)/launch/jw_interface.launch.xml" >
+      <arg name="serial_port" value="$(var serial_port)"/>
+      <arg name="vehicle_cmd_timeout" value="$(var vehicle_cmd_timeout)"/>
+  </include>
 
   <!-- jw_interface awiv adapter -->
-  <include file="$(find jw_interface_awiv_adapter)/launch/jw_interface_awiv_adapter.launch"/>
-
+  <include file="$(find-pkg-share jw_interface_awiv_adapter)/launch/jw_interface_awiv_adapter.launch.xml" >
+  </include> 
+  <include file="$(find-pkg-share logiee-s-tc_launch)/launch/dummy_diag_publisher/vehicle.launch.xml"/>
 </launch>

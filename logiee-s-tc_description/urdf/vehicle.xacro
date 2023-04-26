@@ -1,14 +1,17 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
   <!-- load parameter -->
-  <xacro:property name="vehicle_info" value="${load_yaml('$(find logiee_s-tc_description)/config/vehicle_info.param.yaml')}"/>
+  <xacro:property name="vehicle_info" value="${xacro.load_yaml('$(find logiee_s-tc_description)/config/vehicle_info.param.yaml')}"/>
 
   <!-- vehicle body -->
   <link name="base_link">
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
-      <geometry>
+      <!-- <geometry>
         <mesh filename="package://logiee_s-tc_description/mesh/LogieeS-TC.dae" scale="1 1 1"/>
+      </geometry> -->
+      <geometry>
+          <cylinder length="0.6" radius="0.4"/>
       </geometry>
     </visual>
   </link>
